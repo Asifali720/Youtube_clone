@@ -12,7 +12,7 @@ const registerUser = asyncHandler(async (req, res) =>{
     ){
         throw new ApiError(400, 'All feilds is required')
     }
-    const exitsUser = User.find({
+    const exitsUser = await User.find({
         $or: [{username}, {email}]
     })
     if(exitsUser){
